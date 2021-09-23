@@ -9,9 +9,22 @@
     "build-dev": "webpack serve --open --config webpack.dev.js"
   },
   "jest": {
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "^config$": "<rootDir>/configs/app-config.js"
     },
     "setupFiles": [
       "<rootDir>/setupTests.js"
@@ -36,6 +49,7 @@
     "sass": "^1.38.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
+    "supertest": "^6.1.6",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.0.0",
@@ -47,6 +61,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "node-fetch": "^2.0.0",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "superagent": "^6.1.0"
   }
 }

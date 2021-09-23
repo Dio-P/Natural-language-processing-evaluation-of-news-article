@@ -2,30 +2,30 @@
 
 
 var path = require('path');
-const express = require('express');
+// const express = require('express');
 const fetch = require('node-fetch');
 const mockApi = require("./mockAPI");
 require('dotenv').config()
 const apiCall = mockApi.method;
 let inputBox = mockApi.otherMethod;
-
+const app = require("./app.js");
 // const mockAPIResponse = require('./mockAPI.js')
 
 
 
-const app = express()
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-const cors = require("cors");
-app.use(cors());
+// const app = express()
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// const cors = require("cors");
+// app.use(cors());
 
-app.use(express.static('dist'))
+// app.use(express.static('dist'))
 
 console.log(__dirname)
 
-app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-})
+// app.get('/', function (req, res) {
+//     res.sendFile('dist/index.html')
+// })
 
 
 app.listen(3000, function () {
