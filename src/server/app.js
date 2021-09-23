@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.static('dist'));
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+    res.status(200).sendFile('dist/index.html');
 })
 
 module.exports = app;
