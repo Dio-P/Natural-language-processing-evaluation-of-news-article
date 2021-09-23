@@ -5,6 +5,19 @@
 import mockAxios from 'jest-mock-axios';
 const mockApi = require("../src/server/mockAPI.js");
 const apiCall = mockApi.method;
+//////////////////////////////////
+const mockRequest = (sessionData, body) => ({
+    session: { data: sessionData },
+    body,
+  });
+  
+  const mockResponse = () => {
+    const res = {};
+    res.status = jest.fn().mockReturnValue(res);
+    res.json = jest.fn().mockReturnValue(res);
+    return res;
+  };
+////////////////////////////
 // const baseUrl = otherOtherMethod.baseUrl;
 // import { url, apiCall } from "../src/server/mockAPI.js";
 
@@ -21,9 +34,12 @@ describe("apiCall", () => {
 
     describe("when API call is successfull", ()=> {
         it("should return inputBox", async () => {
-            let req = {bosy: { data: { newUrl: 'https://www.bbc.co.uk/news/business-57724779' } } };
-            const baseUrl = "https://api.meaningcloud.com/sentiment-2.1?key=";
-            let nUrl = "https://www.bbc.co.uk/news/business-57724779";
+            const req = mockRequest(
+                {},
+                { newUrl: 'https://www.bbc.co.uk/news/business-57724779'}
+              );
+            // const baseUrl = "https://api.meaningcloud.com/sentiment-2.1?key=";
+            // let nUrl = "https://www.bbc.co.uk/news/business-57724779";
             let inputBox = {"agreement": 'DISAGREEMENT',
                             "subjectivity": 'SUBJECTIVE',
                             "confidence": '86',

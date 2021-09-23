@@ -94,7 +94,7 @@ app.post("/url", apiCall)
 // the function belowe is loading only the second time and not the first!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.get("/results", function(req,res){
   console.log("inputBox =>", inputBox);
-  res.send(inputBox);
+  res.status(200).send(inputBox);
 });
 
 
