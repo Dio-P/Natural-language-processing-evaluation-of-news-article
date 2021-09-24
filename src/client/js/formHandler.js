@@ -8,7 +8,17 @@ async function handleSubmit(event) {
     let formText = document.getElementById('url').value;
     CreateNURL(formText);
     console.log("newUrl is !!!!!!!!!!!!!==>", newUrl);
-    Client.postData("/url", {newUrl})
+    postData("/url", {newUrl})
+
+async function postData( url = " ", data = {}){
+    try {
+        const response = await axios.post(url, {data})
+        console.log(response); 
+        return response; 
+    }catch (error) {
+        console.error(error);
+        }
+}
 
 function CreateNURL(formText){
     let url = new URL(formText)
@@ -17,6 +27,8 @@ function CreateNURL(formText){
     alert(url);
     newUrl = url
     return url
+
+
 }
 
 const respons= await axios.get('http://localhost:3000/results')
@@ -24,14 +36,13 @@ const respons= await axios.get('http://localhost:3000/results')
         // let response = await respons.json()
         let response = await respons.data;
         console.log("res for results is!!!!!!!! ==>", response);
-        console.log("agreement : "+ response.agreement +"  subjectivity : "+ response.subjectivity+"  confidence : "+response.confidence+"  irony : "+response.irony);
-        document.getElementById('results').innerHTML = "agreement : "+ response.agreement +"  subjectivity : "+ response.subjectivity+"  confidence : "+response.confidence+"  irony : "+response.irony 
+        console.log(`agreement : ${response.agreement} <br>  subjectivity : ${response.subjectivity} <br> confidence : ${response.confidence} <br>  irony : ${response.irony}`);
+        document.getElementById('results').innerHTML = `Agreement : ${response.agreement} <br>  Subjectivity : ${response.subjectivity} <br> Confidence : ${response.confidence} <br>  Irony : ${response.irony}` 
         return response
     }catch(error){
         console.log("error", error);
     }
 }
-
 
 // const respons= await fetch('http://localhost:3000/results')
 //     try {
