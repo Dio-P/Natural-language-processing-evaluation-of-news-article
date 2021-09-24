@@ -1,25 +1,23 @@
 
 import axios from 'axios';
-// import {fetch} from'node-fetch';
-
+// this is the main function that gets the url value from the form and post it to the server
 async function handleSubmit(event) {
     let newUrl = {}
     event.preventDefault()
     let formText = document.getElementById('url').value;
     CreateNURL(formText);
-    console.log("newUrl is !!!!!!!!!!!!!==>", newUrl);
     postData("/url", {newUrl})
 
+// post function 
 async function postData( url = " ", data = {}){
     try {
         const response = await axios.post(url, {data})
-        console.log(response); 
         return response; 
     }catch (error) {
         console.error(error);
         }
 }
-
+// create a new url object from the form input
 function CreateNURL(formText){
     let url = new URL(formText)
     console.log("new URL: ");
@@ -27,33 +25,17 @@ function CreateNURL(formText){
     alert(url);
     newUrl = url
     return url
-
-
 }
 
+// updating the U.I.
 const respons= await axios.get('http://localhost:3000/results')
     try {
-        // let response = await respons.json()
         let response = await respons.data;
-        console.log("res for results is!!!!!!!! ==>", response);
-        console.log(`agreement : ${response.agreement} <br>  subjectivity : ${response.subjectivity} <br> confidence : ${response.confidence} <br>  irony : ${response.irony}`);
         document.getElementById('results').innerHTML = `Agreement : ${response.agreement} <br>  Subjectivity : ${response.subjectivity} <br> Confidence : ${response.confidence} <br>  Irony : ${response.irony}` 
         return response
     }catch(error){
         console.log("error", error);
     }
 }
-
-// const respons= await fetch('http://localhost:3000/results')
-//     try {
-//         let response = await respons.json()
-//         console.log("res for results is!!!!!!!! ==>", response);
-//         console.log("agreement : "+ response.agreement +"  subjectivity : "+ response.subjectivity+"  confidence : "+response.confidence+"  irony : "+response.irony);
-//         document.getElementById('results').innerHTML = "agreement : "+ response.agreement +"  subjectivity : "+ response.subjectivity+"  confidence : "+response.confidence+"  irony : "+response.irony 
-//         return response
-//     }catch(error){
-//         console.log("error", error);
-//     }
-// }
 
 export { handleSubmit, }
