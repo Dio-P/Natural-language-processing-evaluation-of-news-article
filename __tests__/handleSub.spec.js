@@ -27,7 +27,7 @@ describe("Test: 'CreateNURL'", () => {
             expect(validateUrl(formText)).toBeTruthy;
         });
         test('It should be return false if invalid URL is passed into it', () => {
-            expect(validateUrl("google.")).toBeFalsy();
+            expect(validateUrl("localhost.")).toBeFalsy();
         });
     });
     });
