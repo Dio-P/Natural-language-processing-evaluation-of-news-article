@@ -36,10 +36,11 @@ const response = await axios(options, requestOptions);
     inputBox["subjectivity"]=data.subjectivity;
     inputBox["confidence"]=data.confidence;
     inputBox["irony"]=data.irony;
-    console.log(inputBox);
+    console.log("inputBox =>", inputBox);
     return inputBox
 }
 
   module.exports = {
-    apiCall
+    apiCall,
+    inputBox
   }

@@ -22,14 +22,17 @@ async function postData( url = " ", data = {}){
 async function handleSubmit(event) {
     event.preventDefault();
     let formText = document.getElementById('url').value;
+    console.log("formText=>", formText);
     const newUrl = CreateNURL(formText);
-    await postData("/url", {newUrl})
+    console.log("newUrl=>", newUrl);
+    postData("/url", {newUrl})
 
 
    // updating the U.I.
    const respons= await axios.get('http://localhost:3000/results')
     try {
         let response = await respons.data;
+        console.log("response=>", response);
         document.getElementById('results').innerHTML = `Agreement : ${response.agreement} <br>  Subjectivity : ${response.subjectivity} <br> Confidence : ${response.confidence} <br>  Irony : ${response.irony}` 
         return response
     }catch(error){

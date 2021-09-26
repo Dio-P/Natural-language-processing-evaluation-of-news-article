@@ -3,8 +3,8 @@ require('dotenv').config()
 
 // importing function and object from the API call function
 const mockApi = require("./mockAPI");
-const apiCall = mockApi.method;
-let inputBox = mockApi.otherMethod;
+const apiCall = mockApi.apiCall;
+let inputBox = mockApi.inputBox;
 
 // importing app instance from app.js
 const app = require("./app.js");
