@@ -41,5 +41,5 @@ const response = await axios(options, requestOptions);
 }
 
   module.exports = {
-    method:apiCall,
-    otherMethod: inputBox}
+    apiCall
+  }

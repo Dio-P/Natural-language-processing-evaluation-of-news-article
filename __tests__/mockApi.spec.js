@@ -1,4 +1,4 @@
-import apiCall from "../src/server/mockAPI.js"
+const { apiCall } = require("../src/server/mockAPI.js")
 
 
 describe("Test=> 'apiCall()'", () => {
@@ -6,8 +6,9 @@ describe("Test=> 'apiCall()'", () => {
         expect(apiCall).toBeDefined();
     });
 
-    test('Should be a function', () => {
-        expect(typeof apiCall).toBe("object")
+    test('apiCall should be a function', () => {
+        // expect(typeof apiCall).toBe("object")
+        expect(typeof apiCall).toBe("function");
         // expect(Object.is(apiCall, "function")).toBe(true)
     });
 });
