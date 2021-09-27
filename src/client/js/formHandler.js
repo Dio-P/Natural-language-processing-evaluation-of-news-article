@@ -21,7 +21,19 @@ async function postData( url = " ", data = {}){
 // this is the main function that gets the url value from the form and post it to the server
 async function handleSubmit(event) {
     event.preventDefault();
-    let formText = document.getElementById('url').value;
+    document.getElementById("url").classList.remove('error');
+    let formText = whyTheHellIsItNotWorking()
+    function whyTheHellIsItNotWorking(){
+        let textInput = document.getElementById('url').value;
+        if(textInput.length <1){
+            document.getElementById("url").classList.add('error');
+            alert("Error! Url needs to be added");
+            throw new Error("Error! URL needs to be added");
+        }else{
+            return textInput
+        }
+
+    }
     console.log("formText=>", formText);
     const newUrl = CreateNURL(formText);
     console.log("newUrl=>", newUrl);
