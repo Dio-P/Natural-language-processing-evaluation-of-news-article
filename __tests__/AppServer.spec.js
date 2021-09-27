@@ -1,4 +1,3 @@
-// const { TestWatcher } = require("@jest/core");
 const request = require("supertest");
 const { response } = require("../src/server/app.js");
 const app = require("../src/server/app.js");

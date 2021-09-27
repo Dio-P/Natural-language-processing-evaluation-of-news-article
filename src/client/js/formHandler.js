@@ -7,23 +7,12 @@ function CreateNURL(formText){
     return url;
 }
 
-// post function 
-async function postData( url = " ", data = {}){
-    try {
-        const response = await axios.post(url, {data})
-        return response; 
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-
 // this is the main function that gets the url value from the form and post it to the server
 async function handleSubmit(event) {
     event.preventDefault();
     document.getElementById("url").classList.remove('error');
-    let formText = whyTheHellIsItNotWorking()
-    function whyTheHellIsItNotWorking(){
+    let formText = zeroInput()
+    function zeroInput(){
         let textInput = document.getElementById('url').value;
         if(textInput.length <1){
             document.getElementById("url").classList.add('error');
