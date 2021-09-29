@@ -4,7 +4,9 @@ require('dotenv').config()
 // importing function and object from the API call function
 const mockApi = require("./mockAPI");
 const apiCall = mockApi.apiCall;
+// let builtInpBox = mockApi.InpBox;
 let inputBox = mockApi.inputBox;
+// let inputBox = Promise.resolve(mockApi.apiCall);
 
 // importing app instance from app.js
 const app = require("./app.js");
@@ -16,7 +18,19 @@ app.listen(3000, function () {
 // when we get the url from the Client tha apiCall function is activated
 app.post("/url", apiCall)
 
-app.get("/results", function(req,res){
-  console.log("inputBox =>", inputBox);
-  res.status(200).send(inputBox);
+// app.get("/results", function(req,res){
+//   let inputBox = apiCall;
+//   // console.log("inputBox=>", inputBox)
+//   // let inputBox = builtInpBox; ///// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//   console.log("inputBoxServer =>", inputBox);
+//   res.status(200).send(inputBox);
+// });
+
+app.get("/results", async (req,res) => {
+    // console.log("inputBox=>", inputBox)
+    // let inputBox = builtInpBox; ///// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // let INPUT = await inputBox;
+    console.log("/results to be sent")
+    console.log("inputBoxServer =>", inputBox);
+    res.status(200).send(inputBox)
 });

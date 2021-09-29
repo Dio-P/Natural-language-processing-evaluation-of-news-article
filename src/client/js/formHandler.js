@@ -26,19 +26,32 @@ async function handleSubmit(event) {
     console.log("formText=>", formText);
     const newUrl = CreateNURL(formText);
     console.log("newUrl=>", newUrl);
-    Client.postData("/url", {newUrl})
-
+    console.log("data to be posted ");
+    let post = await Client.postData("/url", {newUrl})
+    .then(getingDataFromServer())
+};
+    // .then(function(){
+    //     console.log("getDataFunc trigered")
+    //     setTimeout(getingDataFromServer(), 10000)
+    // });
+    // .then(getingDataFromServer())
+    // .then(function (){
+    //     const getingData = setTimeout(getingDataFromServer(), 0)
+    //  })
+    
 
    // updating the U.I.
-   const respons= await axios.get('http://localhost:3000/results')
-    try {
-        let response = await respons.data;
-        console.log("response=>", response);
-        document.getElementById('results').innerHTML = `Agreement : ${response.agreement} <br>  Subjectivity : ${response.subjectivity} <br> Confidence : ${response.confidence} <br>  Irony : ${response.irony}` 
-        return response
-    }catch(error){
-        console.log("error", error);
-    }
+
+async function getingDataFromServer(){
+    const respons= await axios.get('http://localhost:3000/results')
+        try {
+            let response = await respons.data;
+            console.log("response=>", response);
+            document.getElementById('results').innerHTML = `Agreement : ${response.agreement} <br>  Subjectivity : ${response.subjectivity} <br> Confidence : ${response.confidence} <br>  Irony : ${response.irony}` 
+            return response
+        }catch(error){
+            console.log("error", error);
+        }
 }
 
-export { handleSubmit, }
+export { handleSubmit, getingDataFromServer}
