@@ -26,7 +26,7 @@ async function handleSubmit(event) {
     console.log("formText=>", formText);
     const newUrl = CreateNURL(formText);
     console.log("newUrl=>", newUrl);
-    postData("/url", {newUrl})
+    Client.postData("/url", {newUrl})
 
 
    // updating the U.I.

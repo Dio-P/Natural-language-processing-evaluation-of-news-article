@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // post function 
 export async function postData( url = " ", data = {}){
     try {
