@@ -4,14 +4,16 @@ const fetch = require('node-fetch');
 const app = require("./app.js");
 // API call
 // declaring the variables we will need for the axios call
+let inputBox={}
 async function apiCall(req, res){
 
+    let nUrl = req.body.data.newUrl; 
     const baseUrl = "https://api.meaningcloud.com/sentiment-2.1?key=";
     const apiKey = process.env.apiKey;
     const ofType = "&of=json&url=";
     const lang = "&lang=en";
     // getting the URL from the Client
-    let nUrl = req.body.data.newUrl;
+    
     console.log("nUrl=>", nUrl);
     const requestOptions=  {
       method: 'POST',
@@ -29,7 +31,8 @@ async function apiCall(req, res){
             },
         };
       // axios call
-      const response = await axios(options, requestOptions).then( async(response) =>{
+      const response = await axios(options, requestOptions)
+      try{
         let data = await response.data;
         let inputBox= Object.create({})
         // console.log("inputBoxAfter Cretion Before pushin=>", inputBox);
@@ -40,40 +43,23 @@ async function apiCall(req, res){
         inputBox["confidence"]=data.confidence;
         inputBox["irony"]=data.irony;
         console.log("inputBox =>", inputBox);
-        return inputBox
-      })
-  // app.get("/results", async (req,res) => {
-  // // console.log("inputBox=>", inputBox)
-  // // let inputBox = builtInpBox; ///// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // console.log("/results to be sent")
-  // console.log("inputBoxServer =>", inputBox);
-  // res.status(200).send(inputBox);
+         app.get("/results", async (req,res) => {
+          // console.log("inputBox=>", inputBox)
+          // let inputBox = builtInpBox; ///// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          console.log("/inputBox) to be sent")
+          console.log("inputBox)Server =>", inputBox);
+          res.status(200).send(inputBox)
+        })
+        // return inputBox
+      }catch(error){
+        console.log("error", error)
+      }
+       
+      
 };
-// return await inputBox
-// let responseOK = response && response.status === 200 && response.statusText === 'OK';
-// if (responseOK) {
 
 
-// async function builtInpBox () {
-//       // console.log("response is =>", response);
-//       let data = await response.data;
-//       let inputBox= Object.create({})
-//       // console.log("inputBoxAfter Cretion Before pushin=>", inputBox);
-//       inputBox["agreement"]=data.agreement;
-//       inputBox["subjectivity"]=data.subjectivity;
-//       inputBox["confidence"]=data.confidence;
-//       inputBox["irony"]=data.irony;
-//       console.log("inputBox =>", inputBox);
-//       return await inputBox
-// }
-// console.log("typeof apiCall =>", typeof apiCall);
-// let ApCall = Promise.resolve(apiCall)
-// console.log("typeof ApCall =>", typeof ApCall);
-// console.log("ApCall =>", ApCall);
-let inputBox = async() => {await Promise.resolve(apiCall());}
-console.log("typeof inputBox=>", typeof inputBox)
-console.log("inputBox =>", inputBox)
   module.exports = {
     apiCall,
-    inputBox
+    // inputBox
   }

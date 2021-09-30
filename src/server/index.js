@@ -26,11 +26,3 @@ app.post("/url", apiCall)
 //   res.status(200).send(inputBox);
 // });
 
-app.get("/results", async (req,res) => {
-    // console.log("inputBox=>", inputBox)
-    // let inputBox = builtInpBox; ///// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // let INPUT = await inputBox;
-    console.log("/results to be sent")
-    console.log("inputBoxServer =>", inputBox);
-    res.status(200).send(inputBox)
-});
