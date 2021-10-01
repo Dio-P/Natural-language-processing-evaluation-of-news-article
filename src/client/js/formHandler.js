@@ -30,20 +30,9 @@ async function handleSubmit(event) {
     let post = await Client.postData("/url", {newUrl})
     .then(getingDataFromServer())
 };
-    // .then(function(){
-    //     console.log("getDataFunc trigered")
-    //     setTimeout(getingDataFromServer(), 10000)
-    // });
-    // .then(getingDataFromServer())
-    // .then(function (){
-    //     const getingData = setTimeout(getingDataFromServer(), 0)
-    //  })
-    
-
-   // updating the U.I.
 
 async function getingDataFromServer(){
-    const respons= await axios.get('http://localhost:3000/results')
+    const respons= await axios.get('/results')
         try {
             let response = await respons.data;
             console.log("response=>", response);

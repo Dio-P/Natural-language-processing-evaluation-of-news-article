@@ -18,11 +18,3 @@ app.listen(3000, function () {
 // when we get the url from the Client tha apiCall function is activated
 app.post("/url", apiCall)
 
-// app.get("/results", function(req,res){
-//   let inputBox = apiCall;
-//   // console.log("inputBox=>", inputBox)
-//   // let inputBox = builtInpBox; ///// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//   console.log("inputBoxServer =>", inputBox);
-//   res.status(200).send(inputBox);
-// });
-

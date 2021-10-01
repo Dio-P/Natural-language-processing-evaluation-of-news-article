@@ -4,12 +4,12 @@ const app = require("../src/server/app.js");
 const apiCall= require("../src/server/mockAPI.js");
 
 
-describe("test the result is send back", () => {
+describe("test that the server function is working", () => {
     test("It should responce the GET method", () => {
         return request(app)
-        .get("/results")
+        .post("/url")
         .then(response => {
-            expect(response.statusCode).toBe(200);
+            expect(response).toHaveBeenCalledWith("apiCall");
 
         });
     });

@@ -24,7 +24,14 @@ module.exports = {
                   "sass-loader",
                 ],
               },
-        ]
+        ],
+        devServer: {
+            setup(app) {
+                app.post('*', (req, res) => {
+                    res.redirect(req.originalUrl);
+                });
+            }
+        },
     },
     output: {
         libraryTarget: 'var',
