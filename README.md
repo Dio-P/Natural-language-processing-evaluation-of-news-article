@@ -1,9 +1,17 @@
-# Webpack Express Example App
+# Natural language processing evaluation of news article
 
-This app is getting a url from the U.I. and sends it to an API where it is validated to return some of the texts characteristics. 
+## Description:
 
-It is using Webpack, Express and Jest.
+This app is returning a natural language processing evaluation of any page or article entered by URL
 
-It has been made by Dio Papadopoulos as part of a Udacity course for front end development.
-It has been particularly annoying, as is everything when you are not reading the instructions well before working on it.
-I will not start describing the frustration of making this run with Webpack5. But now it is done! :)
+### This project among others is using:
+
+- Webpack5
+- Express
+- Jest
+- Service Workers
+- SASS (Scss)
+- Babel
+
+#### It was made by Dio Papadopoulos as part of a Udacity's front end developer course.
+
