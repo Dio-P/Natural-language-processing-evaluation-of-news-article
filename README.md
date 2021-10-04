@@ -40,10 +40,9 @@ devDependencies:
 ```
   dependencies:
 ```
-    "axios": "^0.21.4",
+   "axios": "^0.21.4",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "node-fetch": "^2.0.0",
-    "regenerator-runtime": "^0.13.9",
-    "superagent": "^6.1.0"
+    "regenerator-runtime": "^0.13.9"
 ```
