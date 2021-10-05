@@ -27,12 +27,12 @@ async function handleSubmit(event) {
     const newUrl = CreateNURL(formText);
     console.log("newUrl=>", newUrl);
     console.log("data to be posted ");
-    let post = await Client.postData("/url", {newUrl})
+    let post = await Client.postData("http://localhost:3000/url", {newUrl})
     .then(getingDataFromServer())
 };
 
 async function getingDataFromServer(){
-    const respons= await axios.get('/results')
+    const respons= await axios.get('http://localhost:3000/results')
         try {
             let response = await respons.data;
             console.log("response=>", response);
